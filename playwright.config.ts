@@ -38,8 +38,11 @@ export default defineConfig({
         browserName: 'chromium',
         channel: 'chrome',
         connectOptions: {
-          wsEndpoint: `ws://${process.env.LIGHTPANDA_HOST || 'localhost'}:${process.env.LIGHTPANDA_PORT || '9222'}`
-        }
+          wsEndpoint: 'ws://localhost:9222',
+          timeout: 30000,
+        },
+        actionTimeout: 30000,
+        navigationTimeout: 30000,
       },
     },
     {
