@@ -1,0 +1,65 @@
+name: Playwright Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [1, 2, 3, 4]
+        shardTotal: [4]
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Install Playwright browsers
+        run: bunx playwright install chromium firefox
+
+      - name: Install LightPanda Browser
+        run: |
+          curl -L -o lightpanda https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-x86_64-linux
+          chmod +x ./lightpanda
+          echo "LIGHTPANDA_PATH=$(pwd)/lightpanda" >> $GITHUB_ENV
+
+      - name: Start LightPanda in background
+        run: |
+          ./lightpanda serve --host 127.0.0.1 --port 9222 &
+          echo "Waiting for LightPanda to start..."
+          sleep 5
+          echo "LightPanda started"
+
+      - name: Run Playwright tests with LightPanda
+        id: test_lightpanda
+        continue-on-error: true
+        run: bunx playwright test --project=lightpanda --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+
+      - name: Run tests in Chrome and Firefox (if LightPanda fails)
+        if: steps.test_lightpanda.outcome == 'failure'
+        run: |
+          echo "LightPanda tests failed. Running tests in Chrome and Firefox..."
+          bunx playwright test --project=chromium --project=firefox --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30

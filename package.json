@@ -1,0 +1,30 @@
+{
+  "name": "po_playwright",
+  "version": "1.0.0",
+  "description": "Experimenting and testing",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "bunx playwright test",
+    "test:bun": "bun test",
+    "test:ui": "NODE_NO_WARNINGS=1 playwright test --ui",
+    "test:headed": "NODE_NO_WARNINGS=1 playwright test --headed",
+    "test:debug": "NODE_NO_WARNINGS=1 playwright test --debug",
+    "test:lightpanda": "NODE_NO_WARNINGS=1 playwright test --project=lightpanda",
+    "test:chromium": "NODE_NO_WARNINGS=1 playwright test --project=chromium",
+    "test:firefox": "NODE_NO_WARNINGS=1 playwright test --project=firefox",
+    "test:webkit": "NODE_NO_WARNINGS=1 playwright test --project=webkit",
+    "knip": "knip",
+    "test:shard": "playwright test --shard=1/4"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "1.51.1",
+    "@types/node": "22.13.14",
+    "knip": "5.46.2",
+    "prettier": "3.5.3",
+    "typescript": "5.8.2"
+  }
+}

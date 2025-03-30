@@ -1,0 +1,41 @@
+services:
+  lightpanda:
+    platform: linux/amd64
+    build: .
+    networks:
+      - test-network
+    command: /usr/local/bin/lightpanda serve --host 0.0.0.0 --port 9222
+    environment:
+      - CI=true
+    ports:
+      - "9222:9222"
+    security_opt:
+      - seccomp=unconfined  # Allow io_uring
+    cap_add:
+      - SYS_ADMIN
+    tty: true
+    stdin_open: true
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9222"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  tests:
+    platform: linux/amd64
+    build: .
+    networks:
+      - test-network
+    environment:
+      - CI=true
+      - LIGHTPANDA_HOST=lightpanda
+      - LIGHTPANDA_PORT=9222
+    depends_on:
+      - lightpanda
+    command: sh -c "sleep 10 && bun playwright test --project=lightpanda"
+
+networks:
+  test-network:
+    name: test-network
+    driver: bridge
