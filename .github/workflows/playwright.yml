@@ -40,21 +40,25 @@ jobs:
 
       - name: Start LightPanda in background
         run: |
-          ./lightpanda serve --host 0.0.0.0 --port 9222 &
+          ./lightpanda serve & echo $! > LPD.pid
           echo "Waiting for LightPanda to start..."
           sleep 5
-          curl -v http://localhost:9222
-          echo "LightPanda started"
+          curl -v http://localhost:9222/json/version || true
+          echo "LightPanda started with PID $(cat LPD.pid)"
 
       - name: Run Playwright tests with LightPanda
         id: test_lightpanda
         continue-on-error: true
         env:
-          DEBUG: pw:api
+          DEBUG: "pw:api,pw:browser*"
+          PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
         run: |
           echo "Testing LightPanda connection..."
-          curl -v http://localhost:9222
-          bunx playwright test --project=lightpanda --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} --timeout=30000
+          bunx playwright test --project=lightpanda --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+
+      - name: Stop LightPanda
+        if: always()
+        run: kill $(cat LPD.pid) || true
 
       - name: Run tests in Chrome and Firefox (if LightPanda fails)
         if: steps.test_lightpanda.outcome == 'failure'
