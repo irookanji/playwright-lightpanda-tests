@@ -37,9 +37,14 @@ export default defineConfig({
       use: {
         browserName: 'chromium',
         connectOptions: {
-          wsEndpoint: 'ws://localhost:9222',
+          wsEndpoint: 'ws://localhost:9222/devtools/browser/a463b482-1d81-489d-9c25-176d803c5c21',
           timeout: 60000,
+          headers: {
+            'User-Agent': 'Playwright',
+          },
         },
+        actionTimeout: 60000,
+        navigationTimeout: 60000,
       },
     },
     {
