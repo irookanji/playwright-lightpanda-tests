@@ -36,9 +36,9 @@ export default defineConfig({
       name: 'lightpanda',
       use: {
         browserName: 'chromium',
-        channel: 'chrome',
-        launchOptions: {
-          executablePath: process.env.LIGHTPANDA_PATH || '/usr/local/bin/lightpanda',
+        connectOptions: {
+          wsEndpoint: 'ws://localhost:9222',
+          timeout: 60000,
         },
       },
     },
