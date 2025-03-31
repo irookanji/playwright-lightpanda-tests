@@ -36,10 +36,15 @@ export default defineConfig({
       name: 'lightpanda',
       use: {
         browserName: 'chromium',
-        channel: 'chrome',
         connectOptions: {
-          wsEndpoint: `ws://${process.env.LIGHTPANDA_HOST || 'localhost'}:${process.env.LIGHTPANDA_PORT || '9222'}`
-        }
+          wsEndpoint: 'ws://localhost:9222/devtools/browser/a463b482-1d81-489d-9c25-176d803c5c21',
+          timeout: 60000,
+          headers: {
+            'User-Agent': 'Playwright',
+          },
+        },
+        actionTimeout: 60000,
+        navigationTimeout: 60000,
       },
     },
     {
