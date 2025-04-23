@@ -21,10 +21,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "1.51.1",
-    "@types/node": "22.13.14",
-    "knip": "5.46.2",
+    "@playwright/test": "1.52.0",
+    "@types/node": "22.14.1",
+    "knip": "5.50.5",
     "prettier": "3.5.3",
-    "typescript": "5.8.2"
+    "typescript": "5.8.3"
   }
 }
