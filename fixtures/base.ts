@@ -1,8 +1,8 @@
-import { test as base, expect } from "@playwright/test"
-import { Application } from "../app"
+import { test as base, expect } from '@playwright/test'
+import { Application } from '../app'
 
 export const test = base.extend<{
-  app: ReturnType<typeof Application>;
+  app: ReturnType<typeof Application>
 }>({
   app: async ({ page }, use) => {
     const app = Application(page)
@@ -10,10 +10,9 @@ export const test = base.extend<{
     // Use the fixture
     await use(app)
   },
-});
+})
 
 export { expect }
-
 
 // import { test as base, expect } from "@playwright/test"
 // import { Application } from "../app"

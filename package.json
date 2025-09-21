@@ -15,16 +15,22 @@
     "test:firefox": "NODE_NO_WARNINGS=1 playwright test --project=firefox",
     "test:webkit": "NODE_NO_WARNINGS=1 playwright test --project=webkit",
     "knip": "knip",
-    "test:shard": "playwright test --shard=1/4"
+    "test:shard": "playwright test --shard=1/4",
+    "format": "biome format --write app pages fixtures tests tests-examples",
+    "format:check": "biome format app pages fixtures tests tests-examples",
+    "lint": "biome lint app pages fixtures tests tests-examples",
+    "lint:fix": "biome lint --write app pages fixtures tests tests-examples",
+    "check": "biome check app pages fixtures tests tests-examples",
+    "check:fix": "biome check --write app pages fixtures tests tests-examples"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@biomejs/biome": "2.2.4",
     "@playwright/test": "1.55.0",
     "@types/node": "24.5.2",
     "knip": "5.63.1",
-    "prettier": "3.6.2",
     "typescript": "5.9.2"
   }
 }

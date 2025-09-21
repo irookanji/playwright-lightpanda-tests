@@ -1,10 +1,10 @@
-import { Page } from "@playwright/test";
-import { LoginPage } from "../pages/login.page";
+import type { Page } from '@playwright/test'
+import { LoginPage } from '../pages/login.page'
 
 export const Application = (page: Page) => {
-  const loginPage = LoginPage(page);
+  const loginPage = LoginPage(page)
 
   return {
     loginPage,
-  };
-};
+  }
+}

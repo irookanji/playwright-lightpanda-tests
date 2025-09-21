@@ -13,6 +13,7 @@ A modern end-to-end testing framework built with Playwright, TypeScript, and Pag
   - Firefox
   - WebKit
 - **Runtime**: Bun
+- **Linting & Formatting**: Biome
 - **CI/CD**: GitHub Actions
 - **Containerization**: Docker
 
@@ -26,6 +27,7 @@ A modern end-to-end testing framework built with Playwright, TypeScript, and Pag
 - Test reporting
 - Type-safe fixtures
 - Configurable test environments
+- Fast linting and formatting with Biome
 
 ## Project Structure
 ```bash
@@ -38,6 +40,7 @@ A modern end-to-end testing framework built with Playwright, TypeScript, and Pag
 ├── tests/
 │ └── login.test.ts # Test files
 ├── playwright.config.ts # Playwright configuration
+├── biome.json # Biome linting and formatting configuration
 └── docker-compose.yml # Docker configuration
 ```
 
@@ -74,6 +77,48 @@ bun test:headed
 # Run with debugger
 bun test:debug
 ```
+
+## Code Quality with Biome
+
+This project uses Biome for fast linting and formatting. Biome combines the functionality of ESLint and Prettier in a single, high-performance tool.
+
+### Available Commands
+
+```bash
+# Format code
+bun format
+
+# Check formatting without fixing
+bun run format:check
+
+# Lint code
+bun lint
+
+# Fix linting issues
+bun run lint:fix
+
+# Run both linting and formatting checks
+bun check
+
+# Fix both linting and formatting issues
+bun run check:fix
+```
+
+### Configuration
+
+Biome is configured via `biome.json` with the following settings:
+- **Indentation**: 2 spaces
+- **Quotes**: Single quotes
+- **Line width**: 100 characters
+- **Semicolons**: As needed
+- **TypeScript**: Full support with strict rules
+
+### Benefits
+
+- **Performance**: Significantly faster than ESLint + Prettier
+- **Zero config**: Works out of the box with sensible defaults
+- **TypeScript native**: Built-in TypeScript support
+- **Single tool**: No need to manage multiple linting/formatting tools
 
 ### Docker Setup
 
@@ -114,3 +159,5 @@ Test reports are automatically generated and can be found in:
 - Use TypeScript for type safety
 - Implement proper test isolation
 - Use fixtures for common setup/teardown
+- Run `bun check:fix` before committing code
+- Keep code formatted and linted with Biome
