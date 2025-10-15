@@ -24,13 +24,13 @@
     "check:fix": "biome check --write app pages fixtures tests tests-examples"
   },
   "keywords": [],
-  "author": "",
+  "author": "@irookanji",
   "license": "ISC",
   "devDependencies": {
-    "@biomejs/biome": "2.2.5",
+    "@biomejs/biome": "2.2.6",
     "@playwright/test": "1.56.0",
     "@types/node": "24.7.2",
-    "knip": "5.64.3",
+    "knip": "5.65.0",
     "typescript": "5.9.3"
   }
 }
