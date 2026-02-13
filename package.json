@@ -24,7 +24,16 @@
     "check:fix": "biome check --write app pages fixtures tests tests-examples",
     "prepare": "husky"
   },
-  "keywords": [],
+  "keywords": [
+    "playwright",
+    "e2e",
+    "end-to-end",
+    "testing",
+    "page-object",
+    "page-objects",
+    "automation",
+    "bun"
+  ],
   "author": "@irookanji",
   "license": "ISC",
   "devDependencies": {
