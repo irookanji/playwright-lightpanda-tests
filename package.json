@@ -37,7 +37,7 @@
   "author": "@irookanji",
   "license": "ISC",
   "devDependencies": {
-    "@biomejs/biome": "2.4.5",
+    "@biomejs/biome": "2.4.6",
     "@playwright/test": "1.58.2",
     "@types/node": "25.3.3",
     "husky": "9.1.7",
