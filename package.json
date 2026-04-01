@@ -38,10 +38,10 @@
   "license": "ISC",
   "devDependencies": {
     "@biomejs/biome": "2.4.10",
-    "@playwright/test": "1.58.2",
+    "@playwright/test": "1.59.0",
     "@types/node": "25.5.0",
     "husky": "9.1.7",
-    "knip": "6.1.0",
+    "knip": "6.2.0",
     "lint-staged": "16.4.0",
     "typescript": "6.0.2"
   },
