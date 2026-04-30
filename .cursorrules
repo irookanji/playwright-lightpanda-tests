@@ -1,0 +1,7 @@
+When asked to review code, check for:
+- Logic bugs and edge cases
+- Security vulnerabilities
+- Performance issues
+- Test coverage gaps
+- Naming and readability
+- Consistency with existing codebase patterns
