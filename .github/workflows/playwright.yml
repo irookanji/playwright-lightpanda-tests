@@ -64,6 +64,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v6
         with:
-          name: playwright-report
+          name: playwright-report-${{ matrix.shardIndex }}
           path: playwright-report/
+          if-no-files-found: ignore
           retention-days: 30
