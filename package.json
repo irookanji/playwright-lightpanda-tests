@@ -6,7 +6,6 @@
   "type": "module",
   "scripts": {
     "test": "bunx playwright test",
-    "test:bun": "bun test",
     "test:ui": "NODE_NO_WARNINGS=1 playwright test --ui",
     "test:headed": "NODE_NO_WARNINGS=1 playwright test --headed",
     "test:debug": "NODE_NO_WARNINGS=1 playwright test --debug",
