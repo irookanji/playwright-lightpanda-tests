@@ -2,7 +2,6 @@
   "name": "po_playwright",
   "version": "1.0.0",
   "description": "Experimenting and testing",
-  "main": "index.js",
   "type": "module",
   "scripts": {
     "test": "bunx playwright test",
