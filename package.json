@@ -45,7 +45,8 @@
   },
   "lint-staged": {
     "*.{js,ts,jsx,tsx}": [
-      "biome check --write",
+      "biome format --write",
+      "biome lint --write",
       "git add"
     ]
   }
