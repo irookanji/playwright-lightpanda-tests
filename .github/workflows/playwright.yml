@@ -29,6 +29,9 @@ jobs:
       - name: Install dependencies
         run: bun install
 
+      - name: Install system dependencies for webkit
+        run: sudo apt-get update && sudo apt-get install -y libwebkit2gtk-4.1-0 libgtk-3-0 libgbm-dev
+
       - name: Install Playwright browsers
         run: bunx playwright install chromium firefox webkit
 
@@ -36,21 +39,14 @@ jobs:
         run: |
           curl -L -o lightpanda https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-x86_64-linux
           chmod +x ./lightpanda
-          echo "LIGHTPANDA_PATH=$(pwd)/lightpanda" >> $GITHUB_ENV
 
-      - name: Start LightPanda server
+      - name: Start LightPanda and run tests
         run: |
           ./lightpanda serve --headless --remote-debugging-port=9222 &
-          echo "LIGHTPANDA_PID=$!" >> $GITHUB_ENV
-          # Wait for LightPanda to start
-          sleep 3
-
-      - name: Run Playwright tests
-        run: bunx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
-
-      - name: Stop LightPanda
-        if: always()
-        run: kill $LIGHTPANDA_PID || true
+          LIGHTPANDA_PID=$!
+          sleep 5
+          bunx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+          kill $LIGHTPANDA_PID || true
 
       - name: Upload test results
         if: always()
