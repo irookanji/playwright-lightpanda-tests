@@ -35,11 +35,11 @@
   "author": "@irookanji",
   "license": "ISC",
   "devDependencies": {
-    "@biomejs/biome": "2.5.14",
+    "@biomejs/biome": "2.5.15",
     "@playwright/test": "1.63.0",
     "@types/node": "26.6.3",
     "husky": "9.1.7",
-    "knip": "6.38.0",
+    "knip": "6.39.0",
     "lint-staged": "17.6.0",
     "typescript": "7.0.2"
   },
