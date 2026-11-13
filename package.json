@@ -35,8 +35,8 @@
   "author": "@irookanji",
   "license": "ISC",
   "devDependencies": {
-    "@biomejs/biome": "2.6.5",
-    "@playwright/test": "1.64.1",
+    "@biomejs/biome": "2.6.6",
+    "@playwright/test": "1.65.0",
     "@types/node": "26.6.6",
     "husky": "9.1.7",
     "knip": "6.44.1",
