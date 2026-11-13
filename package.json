@@ -40,14 +40,6 @@
     "@types/node": "26.6.6",
     "husky": "9.1.7",
     "knip": "6.44.1",
-    "lint-staged": "17.6.0",
     "typescript": "7.0.2"
-  },
-  "lint-staged": {
-    "*.{js,ts,jsx,tsx}": [
-      "biome format --write",
-      "biome lint --write",
-      "git add"
-    ]
   }
 }
