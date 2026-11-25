@@ -39,7 +39,7 @@
     "@playwright/test": "1.65.1",
     "@types/node": "26.6.6",
     "husky": "9.1.7",
-    "knip": "6.45.1",
+    "knip": "6.46.0",
     "typescript": "7.0.2"
   }
 }
